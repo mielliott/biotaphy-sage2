@@ -1,5 +1,5 @@
 {
-    "main_script": "biotaphy-sage2.js",
+    "main_script": "biotaphySage2.js",
     "icon": "icon.png",
     "width":  700,
     "height": 300,
@@ -7,6 +7,7 @@
     "title": "BiotaPhy Results Package Viewer",
     "version": "0.0.1",
     "description": "A collaborative interface for BiotaPhy results packages.",
+	"plugin": "plugin.js",
     "keywords": [ "" ],
     "author": "Michael Elliott <mielliott@ufl.edu>",
     "license": "SAGE2-Software-License"
