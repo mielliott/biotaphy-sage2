@@ -1,5 +1,5 @@
 {
-    "main_script": "biotaphyClient.js",
+    "main_script": "biotaphy-sage2.js",
     "icon": "icon.png",
     "width":  700,
     "height": 300,
