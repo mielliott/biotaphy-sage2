@@ -1,0 +1,13 @@
+{
+    "main_script": "biotaphyClient.js",
+    "icon": "icon.png",
+    "width":  700,
+    "height": 300,
+    "resize": "proportional",
+    "title": "BiotaPhy Results Package Viewer",
+    "version": "0.0.1",
+    "description": "A collaborative interface for BiotaPhy results packages.",
+    "keywords": [ "" ],
+    "author": "Michael Elliott <mielliott@ufl.edu>",
+    "license": "SAGE2-Software-License"
+}
