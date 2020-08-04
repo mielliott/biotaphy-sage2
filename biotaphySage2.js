@@ -10,22 +10,22 @@ var uuid = require("uuid");
 var biotaphySage2 = SAGE2_App.extend({
     init: function (data) {
         // Create a canvas node for this app. Accessible later as this.element
-        this.SAGE2Init("canvas", data);
+        this.SAGE2Init("div", data);
         // As the window is resized, the resize function will be called automatically
         this.resizeEvents = "continuous";
-        // Get the canvas context
-        this.ctx = this.element.getContext("2d");
 
         this.applet = null
         this.package = null
 
         this.pendingRequests = new Map();
 
+        this.element.style.backgroundColor = "black";
+
         if (data.customLaunchParams) {
             this.loadApplet(data.customLaunchParams.appletName);
         }
 
-        if (this.applet == null) {
+        if (!this.applet) {
             this.loadApplet("Package")
         }
     },
@@ -95,13 +95,13 @@ var biotaphySage2 = SAGE2_App.extend({
     },
 
     draw: function (data) {
-        if (this.applet != null) {
+        if (this.applet) {
             this.applet.draw()
         }
     },
 
     resize: function (date) {
-        if (this.applet != null) {
+        if (this.applet) {
             this.applet.draw()
         }
     },
