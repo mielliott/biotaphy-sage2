@@ -29,7 +29,7 @@ function mockRequest(cmd, _data) {
         func: null,
         query: {
             cmd: cmd,
-            requestId: ((wsio.emit.mock) ? wsio.emit.mock.calls.length : 0).toString()
+            requestId: "testId"
         },
         broadcast: true
     }
