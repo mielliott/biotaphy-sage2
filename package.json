@@ -5,8 +5,7 @@
 		"collectCoverage": true
 	},
 	"scripts": {
-		"test": "jest",
-		"ci-process-cover": "cat coverage/lcov.info | coveralls"
+		"test": "jest --coverage && coveralls < coverage/lcov.info"
 	},
 	"keywords": [],
 	"author": "",
