@@ -1,8 +1,6 @@
 
 "use strict";
 
-const { TestScheduler } = require("jest");
-
 const path = require("path")
 const serverRemote = require("./serverRemote");
 
