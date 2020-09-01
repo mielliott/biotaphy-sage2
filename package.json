@@ -1,0 +1,18 @@
+{
+	"name": "biotaphy-sage2",
+	"version": "1.0.0",
+	"scripts": {
+		"test": "jest",
+		"coveralls": "jest --coverage && cat ./tests/coverage/lcov.info | coveralls"
+	},
+	"keywords": [],
+	"author": "",
+	"license": "MIT",
+	"devDependencies": {
+		"coveralls": "^3.1.0",
+		"jest": "^26.4.2"
+	},
+	"dependencies": {
+		"jsdom": "^16.4.0"
+	}
+}
