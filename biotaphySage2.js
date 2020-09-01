@@ -75,7 +75,7 @@ var biotaphySage2 = SAGE2_App.extend({
 
         var query = {
             cmd: cmd,
-            data, _data,
+            data: _data,
             requestId: requestId
         }
 		wsio.emit('applicationRPC', {
