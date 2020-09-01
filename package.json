@@ -1,13 +1,18 @@
 {
 	"name": "biotaphy-sage2",
 	"version": "1.0.0",
+	"jest": {
+		"collectCoverage": true
+	},
 	"scripts": {
-		"test": "jest"
+		"test": "jest",
+		"ci-process-cover": "cat coverage/lcov.info | coveralls"
 	},
 	"keywords": [],
 	"author": "",
 	"license": "MIT",
 	"devDependencies": {
+		"coveralls": "^3.1.0",
 		"jest": "^26.4.2"
 	},
 	"dependencies": {
