@@ -5,8 +5,6 @@
 
 "use strict";
 
-var uuid = require("uuid");
-
 var biotaphySage2 = SAGE2_App.extend({
     init: function (data) {
         // Create a canvas node for this app. Accessible later as this.element
@@ -70,12 +68,14 @@ var biotaphySage2 = SAGE2_App.extend({
     },
 
     remote: function(cmd, callback, _data, _bind) {
+        var uuid = require("uuid");
         var requestId = uuid();
         this.pendingRequests[requestId] = callback.bind(_bind ? _bind : this.applet);
         console.log(_bind)
 
         var query = {
             cmd: cmd,
+            data, _data,
             requestId: requestId
         }
 		wsio.emit('applicationRPC', {
