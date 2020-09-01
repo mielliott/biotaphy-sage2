@@ -1,14 +1,8 @@
 
 "use strict";
 
-// built-in path module
-var path    = require("path");
-var fs      = require("fs")
-
-// load modules from the server's folder
-var request = require(path.join(module.parent.exports.dirname, "request"));  // HTTP client request
-var $       = require("cheerio") // require(path.join(module.parent.exports.dirname, "cheerio"));  // HTML parsing, jquery style
-// var fs		= require(path.join(module.parent.exports.dirname, "fs"));
+const path = require("path");
+const fs = require("fs")
 
 function processRequest(wsio, data, config) {
     let cmd = data.query.cmd;
@@ -45,4 +39,4 @@ function directoryIsResultsPackage(dirPath) {
     return (files.indexOf("package_ancPam.js") >= 0)
 }
 
-module.exports = processRequest;
+exports.processRequest = processRequest

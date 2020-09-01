@@ -7,7 +7,7 @@
     "title": "BiotaPhy Results Package Viewer",
     "version": "0.0.1",
     "description": "A collaborative interface for BiotaPhy results packages.",
-	"plugin": "src/server/plugin.js",
+	"plugin": "plugin.js",
     "keywords": [ "" ],
     "author": "Michael Elliott <mielliott@ufl.edu>",
     "license": "SAGE2-Software-License"
