@@ -27,6 +27,7 @@ function processRequest(wsio, data, config) {
 }
 
 function listPackages() {
+    // SAGE2 has a very odd way of storing zip files (packages); it makes a folder in "collections" with the zip file name, flattens the directory structure inside of that folder and prefixes each file with its local path, separated by underscores. For example, wombat.zip/package/ancPam.js is extracted to wombat/package_ancPam.js
     let searchPath = path.join(mediaFolders.user.path, "collections", "/")
     return fs.readdirSync(searchPath, {withFileTypes: true})
         .filter(file => file.isDirectory())
@@ -39,4 +40,4 @@ function directoryIsResultsPackage(dirPath) {
     return (files.indexOf("package_ancPam.js") >= 0)
 }
 
-exports.processRequest = processRequest
+module.exports.processRequest = processRequest
