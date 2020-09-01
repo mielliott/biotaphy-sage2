@@ -1,6 +1,6 @@
 
 "use strict";
 
-const remote = require("./src/server/serverRemote")
+const serverRemote = require("./src/server/serverRemote")
 
-module.exports = remote.processRequest;
+module.exports = serverRemote.processRequest;
