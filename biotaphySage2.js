@@ -41,16 +41,16 @@ var biotaphySage2 = SAGE2_App.extend({
 
     initAndLoadApplet: function(appletName) {
         var path = require("path")
-        var appletsDirectory = path.join(this.resrcPath, "applets", "/");
+        var appletsDirectory = path.join(this.resrcPath, "src", "client", "applets", "/");
         var appletPath = path.join(appletsDirectory, `applet${appletName}.js`);
 
         var js = document.createElement("script");
 
-        js.addEventListener('error', function(event) {
-            this.log(`Error loading applet ${appletName}`);
-        }, false);
-        
         var _this = this
+        js.addEventListener('error', function(event) {
+            _this.log(`Error loading applet ${appletName}`);
+        }, false);
+
         js.addEventListener('load', function(event) {
             _this.loadInitializedApplet(appletName);
         });
@@ -60,6 +60,13 @@ var biotaphySage2 = SAGE2_App.extend({
         js.src = appletPath;
 
         this.element.appendChild(js);
+    },
+
+    loadInitializedApplet: function(appletName) {
+        // TODO: do we need to do anything to clean up existing applets?
+        var applet = new window[`applet${appletName}`]();
+        this.applet = applet
+        applet.init(this);
     },
 
     remote: function(cmd, callback, _data, _bind) {
@@ -85,13 +92,6 @@ var biotaphySage2 = SAGE2_App.extend({
         if (callback) {
             callback(response);
         }
-    },
-
-    loadInitializedApplet: function(appletName) {
-        // TODO: do we need to do anything to clean up existing applets?
-        var applet = new window[`applet${appletName}`]();
-        this.applet = applet
-        applet.init(this);
     },
 
     draw: function (data) {
