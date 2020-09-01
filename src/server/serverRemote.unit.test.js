@@ -24,10 +24,6 @@ test("Request a list of packages", () => {
 });
 
 function mockRequest(cmd, _data) {
-    let wsio = {
-        emit : jest.fn((event, args) => {})
-    }
-
     let data = {
         app: null,
         func: null,
@@ -38,14 +34,14 @@ function mockRequest(cmd, _data) {
         broadcast: true
     }
 
+    let response = null
+    let wsio = {
+        emit : jest.fn((event, args) => {
+            response = args.data
+        })
+    }
+
     serverRemote.processRequest(wsio, data, null)
 
-    let emitArgs = wsio.emit.mock.calls
-    if (emitArgs.length > 0) {
-        let responseData = emitArgs[emitArgs.length - 1][1].data
-        return responseData
-    }
-    else {
-        return null
-    }
+    return response
 }
