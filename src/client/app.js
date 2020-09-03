@@ -1,11 +1,7 @@
-//
-// SAGE2 application: Biotaphy Results Package Viewer
-// by: Michael Elliott <mielliott@ufl.edu>
-//
 
 "use strict";
 
-var biotaphySage2 = SAGE2_App.extend({
+global.biotaphySage2 = SAGE2_App.extend({
     init: function (data) {
         // Create a canvas node for this app. Accessible later as this.element
         this.SAGE2Init("div", data);
