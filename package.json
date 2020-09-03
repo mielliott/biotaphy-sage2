@@ -15,5 +15,9 @@
 	},
 	"dependencies": {
 		"jsdom": "^16.4.0"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git://github.com/mielliott/biotaphy-sage2.git"
 	}
 }
