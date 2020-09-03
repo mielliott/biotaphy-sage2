@@ -15,45 +15,23 @@ global.biotaphySage2 = SAGE2_App.extend({
 
         this.element.style.backgroundColor = "black";
 
+        // The following "requires" need to be explicit so that they are detected by browserify
+        this.appletClasses = new Map()
+        this.appletClasses["package"] = require("./applets/AppletPackage")
+
         if (data.customLaunchParams) {
             this.loadApplet(data.customLaunchParams.appletName);
         }
 
         if (!this.applet) {
-            this.loadApplet("Package")
+            this.loadApplet("package")
         }
     },
 
     loadApplet: function(appletName) {
-        if (window[appletName] === undefined) {
-            this.initAndLoadApplet(appletName)
-        }
-        else {
-            this.loadInitializedApplet(appletName)
-        }
-    },
-
-    initAndLoadApplet: function(appletName) {
-        var path = require("path")
-        var appletsDirectory = path.join(this.resrcPath, "src", "client", "applets", "/");
-        var appletPath = path.join(appletsDirectory, `applet${appletName}.js`);
-
-        var js = document.createElement("script");
-
-        var _this = this
-        js.addEventListener('error', function(event) {
-            _this.log(`Error loading applet ${appletName}`);
-        }, false);
-
-        js.addEventListener('load', function(event) {
-            _this.loadInitializedApplet(appletName);
-        });
-
-        js.type = "text/javascript";
-        js.async = false;
-        js.src = appletPath;
-
-        this.element.appendChild(js);
+        let Applet = this.appletClasses[appletName]
+        this.applet = new Applet(this)
+        this.applet.init()
     },
 
     loadInitializedApplet: function(appletName) {
@@ -67,7 +45,6 @@ global.biotaphySage2 = SAGE2_App.extend({
         var uuid = require("uuid");
         var requestId = uuid();
         this.pendingRequests[requestId] = callback.bind(_bind ? _bind : this.applet);
-        console.log(_bind)
 
         var query = {
             cmd: cmd,
@@ -105,3 +82,5 @@ global.biotaphySage2 = SAGE2_App.extend({
     event: function (type, position, user, data, date) {},
 
 });
+
+module.exports = biotaphySage2

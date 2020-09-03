@@ -2,14 +2,14 @@
 "use strict";
 
 const path = require("path")
-const serverRemote = require("./serverRemote");
+const serverRemote = require("./serverRemote")
 
 test("Process an empty request", () => {
     let response = mockRequest(null, null)
     expect(response).toBe(null)
 })
 
-test("Request a list of packages", () => {
+test("Process a list packages request", () => {
     global.mediaFolders = {
         user : {
             path : path.resolve("test/resources/")
@@ -21,7 +21,7 @@ test("Request a list of packages", () => {
     expect(response).not.toBeNull()
     expect(response).toHaveProperty("packagesList")
     expect(response.packagesList).toContain("wombat")
-});
+})
 
 function mockRequest(cmd, _data) {
     let data = {
@@ -36,9 +36,9 @@ function mockRequest(cmd, _data) {
 
     let response = null
     let wsio = {
-        emit : jest.fn((event, args) => {
+        emit : (event, args) => {
             response = args.data
-        })
+        }
     }
 
     serverRemote.processRequest(wsio, data, null)
