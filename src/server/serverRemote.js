@@ -3,6 +3,7 @@
 
 const path = require("path");
 const fs = require("fs")
+const mediaUtil = require("./mediaUtil")
 
 function processRequest(wsio, data, config) {
     let cmd = data.query.cmd;
@@ -46,13 +47,14 @@ function listPackages() {
         .map(file => file.name)
 }
 
+
 function listSpecies() {
     return ["bumblebee", "moth"]
 }
 
 function directoryIsResultsPackage(dirPath) {
     let files = fs.readdirSync(dirPath)
-    return (files.indexOf("package_ancPam.js") >= 0)
+    return (files.indexOf(mediaUtil.getMediaPath("package", "ancPam.js")) >= 0)
 }
 
 module.exports.processRequest = processRequest
