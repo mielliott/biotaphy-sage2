@@ -23,6 +23,12 @@ test("Process a list packages request", () => {
     expect(response.packagesList).toContain("wombat")
 })
 
+test("Process an list species request", () => {
+    let response = mockRequest("listSpecies")
+    expect(response.speciesList).toContain("bumblebee")
+    expect(response).toContain("moth")
+})
+
 function mockRequest(cmd, _data) {
     let data = {
         app: null,

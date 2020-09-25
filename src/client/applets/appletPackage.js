@@ -1,7 +1,3 @@
-//
-// BiotaPhy SAGE2 Applet: Package
-// by: Michael Elliott <mielliott@ufl.edu>
-//
 
 "use strict";
 
@@ -24,6 +20,7 @@ let AppletPackage = class {
 	}
 
 	draw() {
+		
 	}
 }
 

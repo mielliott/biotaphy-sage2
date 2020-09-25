@@ -20,6 +20,17 @@ function processRequest(wsio, data, config) {
                     }
                 })
                 break;
+            case "listSpecies":
+                let speciesList = listSpecies()
+                wsio.emit("broadcast", {
+                    app: data.app,
+                    func: data.func,
+                    data: {
+                        requestId: data.query.requestId,
+                        speciesList: speciesList,
+                        err: null
+                    }
+                })
             default:
                 console.log(`Unrecognized command ${cmd}`);
         }
@@ -33,6 +44,10 @@ function listPackages() {
         .filter(file => file.isDirectory())
         .filter(file => directoryIsResultsPackage(path.join(searchPath, file.name)))
         .map(file => file.name)
+}
+
+function listSpecies() {
+    return ["bumblebee", "moth"]
 }
 
 function directoryIsResultsPackage(dirPath) {

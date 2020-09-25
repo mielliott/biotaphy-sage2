@@ -15,7 +15,7 @@ global.biotaphySage2 = SAGE2_App.extend({
 
         this.element.style.backgroundColor = "black";
 
-        // The following "requires" need to be explicit so that they are detected by browserify
+        // The following "requires" need to be explicit strings so that they are detected by browserify
         this.appletClasses = new Map()
         this.appletClasses["package"] = require("./applets/AppletPackage")
 
@@ -78,8 +78,6 @@ global.biotaphySage2 = SAGE2_App.extend({
             this.applet.draw()
         }
     },
-
-    event: function (type, position, user, data, date) {},
 
 });
 
