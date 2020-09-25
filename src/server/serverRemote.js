@@ -3,7 +3,7 @@
 
 const path = require("path");
 const fs = require("fs")
-const mediaUtil = require("./mediaUtil")
+const packageUtil = require("./packageUtil")
 
 function processRequest(wsio, data, config) {
     let cmd = data.query.cmd;
@@ -22,7 +22,8 @@ function processRequest(wsio, data, config) {
                 })
                 break;
             case "listSpecies":
-                let speciesList = listSpecies()
+                let queryData = data.query.data;
+                let speciesList = listSpecies(queryData.packageName)
                 wsio.emit("broadcast", {
                     app: data.app,
                     func: data.func,
@@ -48,13 +49,14 @@ function listPackages() {
 }
 
 
-function listSpecies() {
-    return ["bumblebee", "moth"]
+function listSpecies(packageName) {
+    eval(fs.readFileSync(packageUtil.getFullPath(packageName, "package", "sdm", "info.js")))
+    return projection_info.occurrences.map((entry) => entry.species_name)
 }
 
 function directoryIsResultsPackage(dirPath) {
     let files = fs.readdirSync(dirPath)
-    return (files.indexOf(mediaUtil.getMediaPath("package", "ancPam.js")) >= 0)
+    return (files.indexOf(packageUtil.getLocalPath("package", "ancPam.js")) >= 0)
 }
 
 module.exports.processRequest = processRequest

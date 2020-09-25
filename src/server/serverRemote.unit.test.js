@@ -4,18 +4,18 @@
 const path = require("path")
 const serverRemote = require("./serverRemote")
 
+global.mediaFolders = {
+    user : {
+        path : path.resolve("test/resources/")
+    }
+}
+
 test("Process an empty request", () => {
     let response = mockRequest(null, null)
     expect(response).toBe(null)
 })
 
 test("Process a list packages request", () => {
-    global.mediaFolders = {
-        user : {
-            path : path.resolve("test/resources/")
-        }
-    }
-
     let response = mockRequest("listPackages")
 
     expect(response).not.toBeNull()
@@ -24,7 +24,7 @@ test("Process a list packages request", () => {
 })
 
 test("Process an list species request", () => {
-    let response = mockRequest("listSpecies")
+    let response = mockRequest("listSpecies", { packageName: "wombat" })
     expect(response.speciesList).toContain("bumblebee")
     expect(response.speciesList).toContain("moth")
 })
@@ -35,6 +35,7 @@ function mockRequest(cmd, _data) {
         func: null,
         query: {
             cmd: cmd,
+            data: _data,
             requestId: "testId"
         },
         broadcast: true
