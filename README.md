@@ -22,7 +22,7 @@ To automatically build the app while making changes to the source code,
 ./watch.sh
 ```
 
-## Set up tests
+### Set up tests
 To enable testing in Visual Code,
 1. Install `jest` globally
 ```bash
