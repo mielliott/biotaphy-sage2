@@ -26,7 +26,7 @@ test("Process a list packages request", () => {
 test("Process an list species request", () => {
     let response = mockRequest("listSpecies")
     expect(response.speciesList).toContain("bumblebee")
-    expect(response).toContain("moth")
+    expect(response.speciesList).toContain("moth")
 })
 
 function mockRequest(cmd, _data) {
