@@ -6,9 +6,9 @@ const path = require("path")
 const packageUtil = require("./packageUtil")
 
 function getLocalPath(...entries) {
-    let mediaPath = "package";
+    let mediaPath = "";
     entries.forEach((entry) => {
-        mediaPath += "_" + entry
+        mediaPath += (mediaPath == "") ? entry : "_" + entry
     })
     return mediaPath;
 }

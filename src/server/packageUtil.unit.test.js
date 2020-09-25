@@ -5,7 +5,7 @@ const packageUtil = require("./packageUtil")
 
 test("Get a package-scope path to a file", () => {
     let localPath = packageUtil.getLocalPath("species", "wombat.txt")
-    expect(localPath).toBe("package_species_wombat.txt")
+    expect(localPath).toBe("species_wombat.txt")
 })
 
 test("Get an absolute path to a file within a package", () => {
@@ -16,7 +16,7 @@ test("Get an absolute path to a file within a package", () => {
     }
 
     let fullPath = packageUtil.getFullPath("wombat", "species", "wombat.txt")
-    expect(fullPath).toBe("pathToCollectionsFolder/collections/wombat/package_species_wombat.txt")
+    expect(fullPath).toBe("pathToCollectionsFolder/collections/wombat/species_wombat.txt")
 })
 
 test("Read data from a BiotaPhy data file", () => {
