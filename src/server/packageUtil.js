@@ -24,7 +24,7 @@ function readDataFile(filePath) {
 
     let fileAsString = fs.readFileSync(filePath).toString()
 
-    // BiotaPhy data files begin with "var someVar = ...". We need to replace "var someVar" with "data"
+    // BiotaPhy data files begin with "var someVar = ...". Because we use "use strict", it's illegal to define new variables in "eval". To get around this, replace "var someVar =" with "data =".
     let assignmentPattern = /var .+ =/g
     if (!assignmentPattern.test(fileAsString)) {
         return null;
