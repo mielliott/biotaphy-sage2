@@ -25,8 +25,12 @@ test("Process a list packages request", () => {
 
 test("Process an list species request", () => {
     let response = mockRequest("listSpecies", { packageName: "wombat" })
-    expect(response.speciesList).toContain("bumblebee")
-    expect(response.speciesList).toContain("moth")
+    
+    expect(response).toHaveProperty("speciesList")
+    let speciesList = response.speciesList
+
+    expect(speciesList.length).toBe(58)
+    expect(speciesList).toContain("Bensoniella_oregona")
 })
 
 function mockRequest(cmd, _data) {

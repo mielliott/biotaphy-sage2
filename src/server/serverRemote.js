@@ -50,8 +50,9 @@ function listPackages() {
 
 
 function listSpecies(packageName) {
-    eval(fs.readFileSync(packageUtil.getFullPath(packageName, "package", "sdm", "info.js")))
-    return projection_info.occurrences.map((entry) => entry.species_name)
+    let fileData = packageUtil.readDataFile(packageUtil.getFullPath(packageName, "package", "sdm", "info.js"))
+    let speciesList = fileData.occurrences.map((entry) => entry.species_name)
+    return speciesList
 }
 
 function directoryIsResultsPackage(dirPath) {
