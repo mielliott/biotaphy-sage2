@@ -6,10 +6,15 @@
 
 ![](resources/biotaphy-sage2-overview.png)
 
-## Compile
+## Start developing
 ```bash
 cd $SAGE2_HOME/public/uploads/apps
 git clone git@github.com:mielliott/biotaphy-sage2.git
+npm install
+```
+
+### Compile
+```bash
 ./bundle.sh
 ```
 To automatically build the app while making changes to the source code,
